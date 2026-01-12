@@ -2,7 +2,9 @@
 import { GoogleGenAI, Type } from "@google/genai";
 
 // Always use named parameter for apiKey and assume it is provided in process.env.API_KEY directly
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({
+  apiKey: import.meta.env.VITE_API_KEY || ""
+});
 
 export const getHealthAdvice = async (query: string) => {
   try {
